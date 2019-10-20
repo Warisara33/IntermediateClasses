@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MethodOverriding
+namespace Abstract
 {
-    partial class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            var shapes = new List<Shape>();
-            shapes.Add(new Circle());
-            shapes.Add(new Rectangle());
+            var circle = new Circle();
+            circle.Draw();
 
-            var canvas = new Canvas();
-            canvas.DrawShapes(shapes);
+            var rectangle = new Rectangle();
+            rectangle.Draw();
         }
     }
 }
