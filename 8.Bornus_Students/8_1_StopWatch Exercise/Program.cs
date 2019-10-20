@@ -24,6 +24,9 @@ namespace StopWatch
                 stopwatch.stop(DateTime.Now);
                 Console.WriteLine(stopwatch.GetInterval().ToString());
                 Console.ReadLine();
+                stopwatch.StartTime = DateTime.Today.AddDays(1);
+                stopwatch.EndTime = DateTime.Today.AddYears(-1);
+
             }
         }
     }
