@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-
 namespace StopWatch
 {
     class Program
@@ -14,17 +14,16 @@ namespace StopWatch
 
             for (int i = 0; i < 2; i++)
             {
-                stopwatch.start(DateTime.Today.AddDays(1));
+                stopwatch.start();
 
-                for (int j = 0; j < 1000; j++)
-                {
-                    Thread.Sleep(1);
-                }
-                stopwatch.stop(DateTime.Today.AddYears(-1));
-                Console.WriteLine(stopwatch.GetInterval().ToString());
+                Thread.Sleep(1000);
+
+                stopwatch.stop();
+
+                Console.WriteLine("Duration : " + stopwatch.GetInterval().ToString());
+
+                Console.WriteLine("Press Enter to run the stopwatch one more time");
                 Console.ReadLine();
-                 
-
             }
         }
     }
@@ -33,25 +32,20 @@ namespace StopWatch
         private DateTime _startTime;
         private DateTime _endTime;
         private bool _running;
-
         public void start()
         {
             if (_running)
                 throw new InvalidOperationException("Stopwatch is already running");
-            
-        }
-        _startTime = DateTime.Now;
+            _startTime = DateTime.Now;
             _running = true;
-
+        }
         public void stop()
         {
             if (!_running)
                 throw new InvalidOperationException("Stopwatch is not running");
-
             _endTime = DateTime.Now;
             _running = false;
         }
-
         public TimeSpan GetInterval()
         {
             return _endTime - _startTime;
