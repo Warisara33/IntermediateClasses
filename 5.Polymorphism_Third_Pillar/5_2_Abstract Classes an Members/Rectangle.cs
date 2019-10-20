@@ -9,4 +9,5 @@ namespace Abstract
             Console.WriteLine("Draw a rectangle");
         }
     }
+    
 }
